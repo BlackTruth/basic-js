@@ -2,25 +2,25 @@ module.exports = function repeater(str, options) {
   resultAddit = [];
   result = [];
   let separator = "+";
-  if (options.separator !== undefined) separator = options.separator;
   let additionSeparator = "|";
+  let addit = "";
+  if (options.separator !== undefined)
+    separator = options.separator;
   if (options.additionSeparator !== undefined)
     additionSeparator = options.additionSeparator;
-  let addit = "";
-  if (typeof str != "string") str = str.toString();
+  if (typeof str != "string")
+    str = str + "";
   if (options.addition !== undefined) {
-    addit = options.addition.toString();
-
-    for (let i = 1; i <= options.additionRepeatTimes; i++)
+    addit = options.addition + "";
+    for (let i = 1; i < options.additionRepeatTimes; i++) {
       resultAddit.push(addit);
-
+    }
+    resultAddit.push(addit);
     resultAddit = resultAddit.join(additionSeparator);
   }
-
-  for (let i = 1; i <= options.repeatTimes; i++) {
-    result.push(str);
-    result.push(resultAddit);
-    result.push(separator);
+  for (let i = 1; i < options.repeatTimes; i++) {
+    result.push(str, resultAddit, separator);
   }
+  result.push(str, resultAddit);
   return result.join("");
 };
