@@ -3,7 +3,7 @@ const HALF_LIFE_PERIOD = 5730;
 
 module.exports = function dateSample(sampleActivity) {
   if (typeof sampleActivity !== "string") return false;
-  sampleActivity = Number(sampleActivity);
+  sampleActivity = parseFloat(sampleActivity);
   if (isNaN(sampleActivity)) return false;
   if (sampleActivity <= 0) return false;
   if (sampleActivity > MODERN_ACTIVITY) return false;
